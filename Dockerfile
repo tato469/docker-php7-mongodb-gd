@@ -9,7 +9,13 @@ RUN apt-get update && \
 	libpng-dev \
 	libxpm-dev \
 	libvpx-dev \
-    libssl-dev 
+    libssl-dev \
+    libbz2-dev \
+    libssl-dev \
+    libmemcached-dev \
+    && \
+    apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 
 RUN pecl install mongodb \
     && docker-php-ext-enable mongodb
@@ -21,4 +27,18 @@ RUN docker-php-ext-configure gd \
 	--with-xpm-dir=/usr/lib/x86_64-linux-gnu/ \
 	--with-vpx-dir=/usr/lib/x86_64-linux-gnu/ 
 
-RUN docker-php-ext-install gd
+RUN docker-php-ext-install \
+	bcmath \
+	bz2 \
+	exif \
+	ftp \
+	gd \
+	gettext \
+	mbstring \
+	opcache \
+	shmop \
+	sockets \
+	sysvmsg \
+	sysvsem \
+	sysvshm \
+	zip
