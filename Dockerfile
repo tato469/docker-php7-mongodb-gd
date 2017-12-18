@@ -42,3 +42,5 @@ RUN docker-php-ext-install \
 	sysvsem \
 	sysvshm \
 	zip
+
+RUN a2enmod rewrite
